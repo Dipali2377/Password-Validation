@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Password Validation</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <form action="https://www.google.com">
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username" required />
+
+        <label for="pass">Password</label>
+        <input
+          type="password"
+          name="pass"
+          id="pass"
+          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+          title="Password must contain at least 8 characters including uppercase lowercase and numbers"
+          required
+        />
+        <input type="submit" value="Submit" />
+      </form>
+      <div id="message">
+        <h3>Password must contains:</h3>
+        <p id="capital" class="invalid"><b>Capital (UPPERCASE)</b>letter</p>
+        <p class="invalid" id="letter"><b>lowercase</b>letter</p>
+        <p id="number" class="invalid"><b>Number</b></p>
+        <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+      </div>
+    </div>
+
+    <script>
+      var pInput = document.getElementById("pass");
+      var letter = document.getElementById("letter");
+      var capital = document.getElementById("capital");
+      var number = document.getElementById("number");
+      var length = document.getElementById("length");
+
+      // whenever user clicks on the password button show the message box
+      pInput.onfocus = function () {
+        document.getElementById("message").style.display = "block";
+      };
+
+      //when user clicks outside the password input hide the message box
+      pInput.onblur = function () {
+        document.getElementById("message").style.display = "none";
+      };
+
+      // when user starts typing inside the password feild validate the password
+
+      pInput.onkeyup = function () {
+        // validate lowercase letters
+        var lowerCaseLetters = /[a-z]/g;
+        if (pInput.value.match(lowerCaseLetters)) {
+          letter.classList.remove("invalid");
+          letter.classList.add("valid");
+        } else {
+          letter.classList.remove("valid");
+          letter.classList.add("invalid");
+        }
+
+        // validate upercase letters
+        var uperCaseLetter = /[A-Z]/g;
+        if (pInput.value.match(uperCaseLetter)) {
+          capital.classList.remove("invalid");
+          capital.classList.add("valid");
+        } else {
+          capital.classList.remove("valid");
+          capital.classList.add("invalid");
+        }
+
+        // validate number pattern
+        var numbers = /[0-9]/g;
+        if (pInput.value.match(numbers)) {
+          number.classList.remove("invalid");
+          number.classList.add("valid");
+        } else {
+          number.classList.remove("valid");
+          number.classList.add("invalid");
+        }
+
+        // Validate length of password
+        if (pInput.value.length >= 8) {
+          length.classList.remove("invalid");
+          length.classList.add("valid");
+        } else {
+          length.classList.remove("valid");
+          length.classList.add("invalid");
+        }
+      };
+    </script>
+  </body>
+</html>

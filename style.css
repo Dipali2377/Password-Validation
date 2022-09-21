@@ -1,0 +1,66 @@
+input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid gray;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  /* border: none; */
+}
+
+input[type="submit"] {
+  /* background-color: rgb(244, 114, 244); */
+  background-color: rgb(216, 118, 216);
+  color: white;
+}
+
+.container {
+  background-color: #f1f1f1;
+  padding: 20px;
+  width: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 400px;
+  margin-top: 100px;
+  box-shadow: 0 5px 8px rgb(191, 82, 191);
+  /* box-shadow: 0 5px 8px rgb(32, 194, 65); */
+}
+
+/* when user clicks on the password feild it will display the message box */
+#message {
+  display: none;
+  background: #f1f1f1;
+  color: #000;
+  position: relative;
+  padding: 20px;
+  margin-top: 10px;
+}
+
+#message p {
+  padding: 10px 35px;
+  font-size: 18px;
+}
+
+/* when requirements are right adds green color and checkmark */
+.valid {
+  color: green;
+}
+
+.valid:before {
+  position: relative;
+  left: -35px;
+  content: "✔";
+}
+
+/* when requirements are wrong adds red color and crossmark */
+.invalid {
+  color: red;
+}
+
+.invalid:before {
+  position: relative;
+  left: -35px;
+  content: "✖";
+}
